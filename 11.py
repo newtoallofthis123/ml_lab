@@ -14,6 +14,7 @@ from sklearn.model_selection import train_test_split # implementing train-testsp
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=66)
 from sklearn import model_selection
 
+
 rfc =RandomForestClassifier()
 rfc.fit(X_train,y_train)
 
