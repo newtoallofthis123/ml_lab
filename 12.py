@@ -16,12 +16,26 @@ X = np.array(list(zip(x1, x2))).reshape(len(x1), 2)
 colors = ['b', 'g', 'r']
 markers = ['o', 'v', 's']
 
-K= 3
-kmeans_model = KMeans(n_clusters=K).fit(X)
+kmeans_model = KMeans(n_clusters=3).fit(X)
 plt.plot()
 
 for i, l in enumerate(kmeans_model.labels_):
     plt.plot(x1[i], x2[i], color=colors[l], marker=markers[l],ls='None')
     plt.xlim([0, 10])
     plt.ylim([0, 10])
-    plt.show()
+plt.savefig('knn.png')
+
+import matplotlib.pyplot as plt
+from sklearn.datasets import make_blobs
+from sklearn.cluster import Birch
+
+dataset, clusters = make_blobs(n_samples = 600, centers = 8, cluster_std = 0.75, random_state = 0)
+
+model = Birch(branching_factor = 50, n_clusters = None, threshold = 1.5)
+
+model.fit(dataset)
+
+pred = model.predict(dataset)
+
+plt.scatter(dataset[:, 0], dataset[:, 1], c = pred, cmap = 'rainbow', alpha = 0.7, edgecolors = 'b')
+plt.savefig('birch.png')
