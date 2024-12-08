@@ -34,3 +34,5 @@ def main_linear():
 
     plot_regression_line(x, y, b)
 
+if __name__ == "__main__":
+    main_linear()
